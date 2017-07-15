@@ -1,29 +1,71 @@
 .section-menu {
 	padding:20px 0 20px;
+	
 	nav {
-		margin-top:12px;
+		
 		
 		
 	}
 	.menu {
+	margin-top:5px;
 		
 	display: inline-block;
+	@media screen and (max-width:985px) {
+					display:none;
+					position:absolute;
+					top:240px;
+					text-align:center;
+					left:0;
+					right:0;	
+					width:100%;
+					z-index:1000;
+					
+				}
+					
+
+
+
+	
 
 	
 		&-item{
 		display: inline-block;
 		vertical-align: middle;
 		margin-right:18px;
+		
+
+		@media screen and (max-width:985px) {
+					display:block;
+					padding:10px;
+					background:#0750ab;
+					margin-right:0;
+					opacity:0.8;
+
+				}
+					
 		&:last-child {
 		margin-right:0;
+		
 		}
 		&__link {
 		text-transform:uppercase;
 		color:#223;
 		font-size:1rem;
 		font-family: 'Roboto', sans-serif;
+		@media screen and (max-width:985px) {
+					color:#fff;
+					
+
+
+				}
 		&:hover {
 			color:#0750ab;
+				@media screen and (max-width:985px) {
+					color:#000;
+					
+
+
+				}
 		}
 		}
 
@@ -44,8 +86,11 @@
 	 text-transform: uppercase;
 	 color:#fff;
 	 padding:10px 44px 10px 27px;
-	 margin-top: -30px;
+	 margin-top: -27px;
 	 background:#0750ab;
+	 @media screen and (max-width:985px) {
+					 margin-top: 0px;
+				}
 
 	 &:hover   {
 	 	padding:9px 43px 9px 26px;
@@ -64,6 +109,88 @@
 
 	 }
 	}
+	.sandich {
+
+				position: relative;
+				display: none;
+				float:left;
+				height: 60px;
+				width: 60px;
+				border:3px solid #0750ab;
+				border-radius: 50%;
+				margin-top:15px;
+				cursor: pointer;
+				@media screen and (max-width:520px) {
+				width:50px;
+				height:50px;
+			}
+				@media screen and (max-width:985px) {
+					display:block;
+					margin-top:-10px;
+				}
+				&.active .line-top {
+					top:30px;
+					transform: rotate(-45deg);
+					@media screen and (max-width:520px) {
+				top:22.5px;
+					}
+					}
+					&.active .line-middle {
+						top:30px;
+					transform: rotate(45deg);
+					@media screen and (max-width:520px) {
+				top:22.5px;
+			}
+					
+					}
+					&.active .line-bottom {
+						opacity:0;
+
+						
+					}
+				span {
+					position: absolute;
+					display: block;
+					width:40px;
+					height:5px;
+					left:50%;
+					margin-left: -20px;
+					background: #0750ab;
+					@media screen and (max-width:520px) {
+				width:35px;
+				margin-left: -17.25px;
+					
+			}
+				}
+					
+					
+
+				.line-top {
+					top:20px;
+					transform:rotateX(0deg);
+					transition: transform  .5s;
+					@media screen and (max-width:520px) {
+				top:12.5px;
+			}
+				}
+				.line-middle {
+					top:30px;
+					transform:rotateX(0deg);
+					transition: transform .5s;
+					@media screen and (max-width:520px) {
+				top:22.5px;
+			}
+				}
+				.line-bottom {
+					top:40px;
+					
+					transform:rotateX(0deg);
+					transition: opacity .5s , transform .5s;
+					@media screen and (max-width:520px) {
+				top:32.5px;
+			}
+				}
+			}
 
 }
 .noSubmit {

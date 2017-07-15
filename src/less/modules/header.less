@@ -1,5 +1,10 @@
 .header {
-	
+	position:relative;
+	z-index:1002;
+	width:100%;
+	background:#fff;
+	transition: position .6s;
+	box-shadow: 0 2px 4px rgba(1,1,1,.4);
 	.form_wrap {
 	position: relative;
 	width:100%;
@@ -15,7 +20,7 @@
 		height:auto;
 		padding:21px 32px 5px;
 		box-shadow: 5px 5px 20px rgba(2,2,2,.4),  -5px -5px 20px rgba(2,2,2,.4);
-		z-index: 1001;
+		z-index: 999;
 		display: none;
 		
 	}
@@ -166,6 +171,14 @@
 		font-family: 'Roboto', sans-serif;
 		font-size:0.75rem;
 		text-transform: uppercase;
+		@media screen and (max-width:970px) {
+		font-size:0.65rem;
+		
+		}
+		@media screen and (max-width:830px) {
+		font-size:0.55rem;
+		
+		}
 		
 	}
 }

@@ -23,7 +23,7 @@ const ftp = require('gulp-ftp');
 const config = {
     src: {
         main:'./src',
-        temp:'/template/pages/index.html',
+        temp:['/template/pages/*.html'],
         html:'/',
         less: '/less/*.*',
         css:'/css/',
@@ -38,17 +38,19 @@ const config = {
         main:'./build',
         html:'./build/',
         css:'/css/',
-        js:'/js/',
+        js:'/js/**/*.',
         img:'/image/',
-        fonts:'/fonts/'
+        fonts:'/fonts/',
+         svg:'/image/svg/'
     },
     watch:{
-        temp: ['./src/template/modules/*.html','./src/template/sections/*.html'],
+        temp: ['./src/template/**/*.html'],
         html:'./src/*.html',
         less:'./src/less/**/*.*',
         css:'./src/css/style.css',
         js:['./src/js/**/*.js','./src/libs/**/*.js'],
         jsPost:['./src/js/all.min.js']
+
     }
         
 };
@@ -138,6 +140,7 @@ gulp.task('cleansprite', function() {
 
 
 
+
 gulp.task('spritemade', function() {
     var spriteData =
         gulp.src(config.src.main + config.src.sprite + '*.*')
@@ -170,6 +173,8 @@ gulp.task('browserSync', function () {
 gulp.task('build',['js','css','build:img','build:fonts'],function(){
     gulp.src(config.src.main+'/*.html')
     .pipe(gulp.dest(config.build.main));
+    gulp.src(config.src.main+'/image/svg/*.*')
+    .pipe(gulp.dest(config.build.main+config.build.svg));
     gulp.src(config.src.main + config.src.css+'style.css')
     .pipe(gulp.dest(config.build.main + config.build.css));
     gulp.src(config.src.main + config.src.jsPre+'all.min.js')
@@ -181,6 +186,13 @@ gulp.task('build',['js','css','build:img','build:fonts'],function(){
             use:[pngquant()]
         }))
       .pipe(gulp.dest(config.build.main + config.build.img+'sprite/'));
+     
+       gulp.src(config.src.main + '/image/content/*.*') 
+    .pipe(imagemin({
+            progressive: true,
+            use:[pngquant()]
+        }))
+      .pipe(gulp.dest(config.build.main + config.build.img+'content/'));
       browserSync.init({
         server: {
             baseDir: config.build.main
